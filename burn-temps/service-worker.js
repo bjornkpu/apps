@@ -27,8 +27,7 @@ self.addEventListener('fetch', event => {
             }
             return fetch(event.request).then(fetchResponse => {
                 // Only cache requests with scheme 'http' or 'https'
-                if (fetchResponse.ok &&
-                    (event.request.url.startsWith('http:') || event.request.url.startsWith('https:'))) {
+                if (fetchResponse.ok) {
                     return caches.open(CACHE_NAME).then(cache => {
                         cache.put(event.request, fetchResponse.clone());
                         return fetchResponse;
