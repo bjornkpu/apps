@@ -31,3 +31,31 @@ export async function fetchAllRecords(apiKey, { limit = DEFAULT_LIMIT, shuffle =
         throw error;
     }
 }
+
+export async function postRecord(record) {
+    const url = new URL(API_BASE_URL + RECORDS_ENDPOINT);
+    url.searchParams.append('limit', DEFAULT_LIMIT.toString());
+    url.searchParams.append('shuffle', DEFAULT_SHUFFLE.toString());
+    url.searchParams.append('offset', DEFAULT_OFFSET.toString());
+
+    const options = {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'xc-token': localStorage.getItem('apiKey'),
+        },
+        body: JSON.stringify(record)
+    };
+
+    try {
+        const response = await fetch(url, options);
+        if (!response.ok) {
+            throw new Error('Network response was not ok ' + response.statusText);
+        }
+
+        return await response.json();
+    } catch (error) {
+        console.error('There was a problem with the fetch operation:', error);
+    }
+}

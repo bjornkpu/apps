@@ -1,4 +1,4 @@
-import { fetchAllRecords } from './api.js';
+import {fetchAllRecords, postRecord} from './api.js';
 import { saveRecords, getAllRecords } from './indexedDB.js';
 
 // Register the service worker
@@ -126,9 +126,56 @@ async function fetchRecords() {
         alert('No API key saved. Please enter and save an API key first.');
     }
 }
+
+function getCurrentISOTime() {
+    const date = new Date();
+    const offset = -date.getTimezoneOffset();
+    const sign = offset >= 0 ? '+' : '-';
+    const pad = num => num.toString().padStart(2, '0');
+    const timezoneOffset = `${sign}${pad(Math.floor(Math.abs(offset) / 60))}:${pad(Math.abs(offset) % 60)}`;
+
+    // Construct the date string in the required format
+    return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}T${pad(date.getHours())}:${pad(date.getMinutes())}:${pad(date.getSeconds())}${timezoneOffset}`;
+}
+
+async function track(){
+    if (localStorage.getItem('apiKey')) {
+        const currentTime = getCurrentISOTime(); // Example: '2024-08-23 15:40:00+0200'
+        const temp1Input = parseFloat(document.getElementById('temp1').value);
+        const temp2Input = parseFloat(document.getElementById('temp2').value);
+        const temp3Input = parseFloat(document.getElementById('temp3').value);
+
+        const newRecord = {
+            Time: currentTime,
+            Temp1: temp1Input,
+            Temp2: temp2Input,
+            Temp3: temp3Input
+        };
+
+        const response = await postRecord(newRecord)
+        addRecordToTable(newRecord)
+    } else {
+        alert('No API key saved. Please enter and save an API key first.');
+    }
+}
+
+function addRecordToTable(record) {
+    const recordsTableBody = document.querySelector('#recordsTable tbody');
+    const { formattedTime, shortDate } = formatISOToLocalTime(record.Time);
+    const row = document.createElement('tr');
+    row.innerHTML = `
+    <td><span class="grey-text">${shortDate}</span><br>${formattedTime}</td>
+    <td class="temp">${record.Temp1}</td>
+    <td class="temp">${record.Temp2}</td>
+    <td class="temp">${record.Temp3}</td>
+  `;
+    recordsTableBody.appendChild(row);
+}
+
 window.changeValue = changeValue
 window.saveApiKey = saveApiKey
 window.fetchRecords = fetchRecords
+window.track = track
 
 // Load records on page load
 document.addEventListener('DOMContentLoaded', () => {
