@@ -1,0 +1,151 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #f5f5f5;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+header {
+    background-color: #3f51b5;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    flex: 0 0 40px;
+    border-radius: 2px;
+}
+
+main {
+    width: 95%;
+    max-width: 600px;
+    margin: 2px auto;
+    padding: 2px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    flex: 1;
+    background-color: #f0f0f0;
+    overflow-y: auto;
+}
+
+footer {
+    background-color: #3f51b5;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    flex: 0 0 60px;
+    display: flex;
+    flex-direction: column;
+}
+h1 {
+    text-align: center;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+button {
+    background-color: rgba(64, 172, 61, 0.97);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 20px;
+    cursor: pointer;
+    outline: none;
+    border-radius: 6px;
+    width: 80%;
+}
+
+button:hover {
+    background-color: rgba(64, 172, 61, 0.7);
+}
+
+button:disabled {
+    background-color: #cccccc;
+    color: #666666;
+    cursor: not-allowed;
+    opacity: 0.50;
+}
+
+.table-container {
+    max-width: 100%;
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+thead {
+    background-color: #f8f8f8;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #e0e0e0;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+
+.form-input {
+    display: flex;
+    justify-content: space-between;
+}
+
+.stepper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.stepper-btn {
+    width: 80px;
+    height: 40px;
+    font-size: 20px;
+    font-weight: bold;
+    background-color: rgba(63, 244, 93, 0.81);
+    color: white;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.stepper-btn:disabled {
+    background-color: #8e8686;
+    cursor: not-allowed;
+}
+.stepper>input {
+    width: 80px;
+    height: 30px;
+    font-size: 20px;
+    border-radius: 5px;
+    text-align: center;
+}
+#spinnerInput {
+    width: 60px;
+    height: 40px;
+    text-align: center;
+    font-size: 18px;
+    padding: 5px;
+    margin: 0 10px;
+    line-height: 40px;
+}
+#trackButton {
+    margin-top: 20px;
+    width: 100%;
+}
