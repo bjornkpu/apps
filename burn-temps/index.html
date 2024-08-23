@@ -30,7 +30,7 @@
         </div>
     </main>
     <footer>
-        <form class="form-input">
+        <form class="form-input" onsubmit="event.preventDefault();">
            <div class="stepper">
                 <label for="temp1">Temp1</label>
                 <button class="stepper-btn" onclick="changeValue('temp1',1)">+</button>
@@ -39,15 +39,15 @@
             </div>
             <div class="stepper">
                 <label for="temp2">Temp2</label>
-                <button class="stepper-btn" onclick="changeValue('temp1',1)">+</button>
+                <button class="stepper-btn" onclick="changeValue('temp2',1)">+</button>
                 <input type="number" id="temp2" value="0" min="0" max="1300">
-                <button class="stepper-btn" onclick="changeValue('temp1',-1)">-</button>
+                <button class="stepper-btn" onclick="changeValue('temp2',-1)">-</button>
             </div>
             <div class="stepper">
                 <label for="temp3">Temp3</label>
-                <button class="stepper-btn" onclick="changeValue('temp1',1)">+</button>
+                <button class="stepper-btn" onclick="changeValue('temp3',1)">+</button>
                 <input type="number" id="temp3" value="0" min="0" max="1300">
-                <button class="stepper-btn" onclick="changeValue('temp1',-1)">-</button>
+                <button class="stepper-btn" onclick="changeValue('temp3',-1)">-</button>
             </div>
         </form>
         <button id="trackButton" onclick="track()">Track</button>
