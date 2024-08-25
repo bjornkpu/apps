@@ -1,7 +1,7 @@
 const API_BASE_URL = 'https://app.nocodb.com/api/v2';
 const TABLE_ID = 'mizoub9u6ycblan';
 const RECORDS_ENDPOINT = `/tables/${TABLE_ID}/records`;
-const DEFAULT_LIMIT = 25;
+const DEFAULT_LIMIT = 1000;
 const DEFAULT_SHUFFLE = 0;
 const DEFAULT_OFFSET = 0;
 
