@@ -1,10 +1,10 @@
 const CACHE_NAME = 'burn-temps-cache-v1';
 const URLS_TO_CACHE = [
-    '/',
-    '/index.html',
-    '/css/styles.css',
-    '/js/app.js',
-    '/js/indexedDB.js',
+    // '/',
+    // '/index.html',
+    // '/css/styles.css',
+    // '/js/app.js',
+    // '/js/indexedDB.js',
 ];
 
 self.addEventListener('install', event => {

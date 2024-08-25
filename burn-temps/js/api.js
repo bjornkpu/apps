@@ -7,10 +7,13 @@ const DEFAULT_OFFSET = 0;
 
 
 export async function fetchAllRecords({ limit = DEFAULT_LIMIT, shuffle = DEFAULT_SHUFFLE, offset = DEFAULT_OFFSET } = {}) {
+    var burnNumber = localStorage.getItem('burnNumber')
+
     const url = new URL(API_BASE_URL + RECORDS_ENDPOINT);
     url.searchParams.append('limit', limit);
     url.searchParams.append('shuffle', shuffle);
     url.searchParams.append('offset', offset);
+    url.searchParams.append('where', `where=(BurnNumber,eq,${burnNumber || 1})`);
 
     const options = {
         method: 'GET',

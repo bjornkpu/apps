@@ -1,5 +1,6 @@
 import {fetchAllRecords, postRecord} from './api.js';
 import { saveRecords, getAllRecords } from './indexedDB.js';
+import {showModal, saveApiKey} from "./modal.js";
 
 // Register the service worker
 if ('serviceWorker' in navigator) {
@@ -13,29 +14,7 @@ if ('serviceWorker' in navigator) {
     });
 }
 
-// Function to show the modal
-function showModal() {
-    document.getElementById('apiKeyModal').style.display = 'block';
-}
-
-// Function to close the modal
-function closeModal() {
-    document.getElementById('apiKeyModal').style.display = 'none';
-}
-
-// Function to save the API key in local storage
-async function saveApiKey() {
-    const apiKey = document.getElementById('apiKeyInput').value;
-    if (apiKey) {
-        localStorage.setItem('apiKey', apiKey);
-        closeModal();
-        await fetchAndUpdateRecords(apiKey);
-    } else {
-        alert('Please enter a valid API key');
-    }
-}
-
-async function fetchAndUpdateRecords(apiKey) {
+export async function fetchAndUpdateRecords() {
     try {
         const data = await fetchAllRecords();
         await saveRecords(data.list);
@@ -93,7 +72,7 @@ function formatISOToLocalTime(isoString) {
 window.onload = function() {
     const apiKey = localStorage.getItem('apiKey');
     if (!apiKey) {
-        showModal();
+        showModal('apiKeyModal');
     }
 }
 
@@ -139,23 +118,27 @@ function getCurrentISOTime() {
 }
 
 async function track(){
-    if (localStorage.getItem('apiKey')) {
+    if (!localStorage.getItem('apiKey')) {
+        alert('No API key saved. Please enter and save an API key first.');
+    } else if (!localStorage.getItem('burnNumber')){
+        alert('No Burn Number saved. Please enter and save a Burn Number first.');
+    } else {
         const currentTime = getCurrentISOTime(); // Example: '2024-08-23 15:40:00+0200'
         const temp1Input = parseFloat(document.getElementById('temp1').value);
         const temp2Input = parseFloat(document.getElementById('temp2').value);
         const temp3Input = parseFloat(document.getElementById('temp3').value);
-
+        const burnNumber = localStorage.getItem('burnNumber')
         const newRecord = {
             Time: currentTime,
             Temp1: temp1Input,
             Temp2: temp2Input,
-            Temp3: temp3Input
+            Temp3: temp3Input,
+            BurnNumber: burnNumber,
+            Burn_id: burnNumber
         };
 
         const response = await postRecord(newRecord)
         addRecordToTable(newRecord)
-    } else {
-        alert('No API key saved. Please enter and save an API key first.');
     }
 }
 
@@ -180,4 +163,9 @@ window.track = track
 // Load records on page load
 document.addEventListener('DOMContentLoaded', () => {
     loadRecords();
+
+    var burnNumber = localStorage.getItem('burnNumber')
+    if (burnNumber) {
+        document.getElementById('burnNumberInput').value = burnNumber
+    }
 });
