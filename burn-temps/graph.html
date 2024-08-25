@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/icons/icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="36x36" href="images/icons/icon-36x36.png">
+    <title>Burn Graph</title>
+    <link rel="stylesheet" href="css/modal.css">
+    <link rel="stylesheet" href="css/graph.css">
+    <link rel="manifest" href="manifest.json">
+    <script src="https://cdn.plot.ly/plotly-2.34.0.min.js" charset="utf-8"></script>
+</head>
+<body>
+    <div id="graph"></div>
+
+    <!-- The Modal -->
+    <div id="apiKeyModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2>Enter API Key</h2>
+            <input type="text" id="apiKeyInput" placeholder="Enter your API key">
+            <button onclick="saveApiKey()">Save</button>
+        </div>
+    </div>
+
+    <script type="module" src="js/modal.js"></script>
+    <script type="module" src="js/graph.js"></script>
+</body>
+</html>

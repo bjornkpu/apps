@@ -6,7 +6,7 @@ const DEFAULT_SHUFFLE = 0;
 const DEFAULT_OFFSET = 0;
 
 
-export async function fetchAllRecords(apiKey, { limit = DEFAULT_LIMIT, shuffle = DEFAULT_SHUFFLE, offset = DEFAULT_OFFSET } = {}) {
+export async function fetchAllRecords({ limit = DEFAULT_LIMIT, shuffle = DEFAULT_SHUFFLE, offset = DEFAULT_OFFSET } = {}) {
     const url = new URL(API_BASE_URL + RECORDS_ENDPOINT);
     url.searchParams.append('limit', limit);
     url.searchParams.append('shuffle', shuffle);
@@ -16,7 +16,7 @@ export async function fetchAllRecords(apiKey, { limit = DEFAULT_LIMIT, shuffle =
         method: 'GET',
         headers: {
             'Accept': 'application/json',
-            'xc-token': apiKey
+            'xc-token': localStorage.getItem('apiKey')
         }
     };
 

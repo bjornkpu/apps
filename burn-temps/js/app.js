@@ -37,7 +37,7 @@ async function saveApiKey() {
 
 async function fetchAndUpdateRecords(apiKey) {
     try {
-        const data = await fetchAllRecords(apiKey);
+        const data = await fetchAllRecords();
         await saveRecords(data.list);
         displayRecords(data.list);
     } catch (error) {
