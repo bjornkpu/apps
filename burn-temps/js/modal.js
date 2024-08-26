@@ -32,6 +32,7 @@ export async function setBurnNumber(){
     const burnNumber = document.getElementById('burnNumberInput').value;
     if (burnNumber) {
         localStorage.setItem('burnNumber', burnNumber);
+        document.getElementById('burnNumber').innerHTML = ` #${burnNumber}`;
         closeModal('burnNumberModal');
         await fetchAndUpdateRecords();
     } else {

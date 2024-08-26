@@ -167,5 +167,6 @@ document.addEventListener('DOMContentLoaded', () => {
     var burnNumber = localStorage.getItem('burnNumber')
     if (burnNumber) {
         document.getElementById('burnNumberInput').value = burnNumber
+        document.getElementById('burnNumber').innerHTML = ` #${burnNumber}`;
     }
 });
