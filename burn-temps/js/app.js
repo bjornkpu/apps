@@ -1,6 +1,5 @@
 import {fetchAllRecords, postRecord} from './api.js';
 import { saveRecords, getAllRecords } from './indexedDB.js';
-import {showModal, saveApiKey} from "./modal.js";
 
 // Register the service worker
 if ('serviceWorker' in navigator) {
@@ -66,14 +65,6 @@ function formatISOToLocalTime(isoString) {
     });
 
     return { formattedTime, shortDate };
-}
-
-// Check if the API key is already in local storage
-window.onload = function() {
-    const apiKey = localStorage.getItem('apiKey');
-    if (!apiKey) {
-        showModal('apiKeyModal');
-    }
 }
 
 function changeValue(element,amount) {
@@ -156,7 +147,6 @@ function addRecordToTable(record) {
 }
 
 window.changeValue = changeValue
-window.saveApiKey = saveApiKey
 window.fetchRecords = fetchRecords
 window.track = track
 
