@@ -28,20 +28,7 @@ window.onload = function() {
         showModal('apiKeyModal');
     }
 }
-export async function setBurnNumber(){
-    const burnNumber = document.getElementById('burnNumberInput').value;
-    if (burnNumber) {
-        localStorage.setItem('burnNumber', burnNumber);
-        document.getElementById('burnNumber').innerHTML = ` #${burnNumber}`;
-        closeModal('burnNumberModal');
-        await fetchAndUpdateRecords();
-    } else {
-        alert('Please enter a valid API key');
-    }
-}
-
 
 window.saveApiKey = saveApiKey
-window.setBurnNumber = setBurnNumber
 window.showModal = showModal
 window.closeModal = closeModal
