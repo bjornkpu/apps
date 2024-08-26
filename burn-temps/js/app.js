@@ -124,15 +124,15 @@ async function track(){
         alert('No Burn Number saved. Please enter and save a Burn Number first.');
     } else {
         const currentTime = getCurrentISOTime(); // Example: '2024-08-23 15:40:00+0200'
-        const temp1Input = parseFloat(document.getElementById('temp1').value);
-        const temp2Input = parseFloat(document.getElementById('temp2').value);
-        const temp3Input = parseFloat(document.getElementById('temp3').value);
+        const displayInput = parseFloat(document.getElementById('displayInput').value);
+        const sideInput = parseFloat(document.getElementById('sideInput').value);
+        const topInput = parseFloat(document.getElementById('topInput').value);
         const burnNumber = localStorage.getItem('burnNumber')
         const newRecord = {
             Time: currentTime,
-            Temp1: temp1Input,
-            Temp2: temp2Input,
-            Temp3: temp3Input,
+            Temp1: displayInput,
+            Temp2: sideInput,
+            Temp3: topInput,
             BurnNumber: burnNumber,
             Burn_id: burnNumber
         };

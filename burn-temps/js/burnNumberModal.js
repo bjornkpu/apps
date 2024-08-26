@@ -1,8 +1,4 @@
-import {fetchAndUpdateRecords} from "./app";
-
-window.showBurnNumberModal = showBurnNumberModal
-window.closeBurnNumberModal = closeBurnNumberModal
-window.setBurnNumber = setBurnNumber
+import {fetchAndUpdateRecords} from "./app.js";
 
 export function showBurnNumberModal() {
     document.getElementById('burnNumberModal').style.display = 'block';
@@ -24,3 +20,7 @@ export async function setBurnNumber(){
         alert('Please enter a valid API key');
     }
 }
+
+window.showBurnNumberModal = showBurnNumberModal
+window.closeBurnNumberModal = closeBurnNumberModal
+window.setBurnNumber = setBurnNumber
