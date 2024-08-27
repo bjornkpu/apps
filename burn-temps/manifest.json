@@ -1,21 +1,28 @@
 {
   "name": "Burn Temps",
   "short_name": "BurnTemps",
-  "start_url": "/",
+  "start_url": "/burn-temps",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#000000",
   "description": "Track burn temps for the oven",
   "id": "punsvik.apps.burn-temps",
   "dir": "ltr",
-  "scope": "/",
+  "scope": "/burn-temps",
   "lang": "en",
   "orientation": "portrait-primary",
   "shortcuts": [
     {
       "name": "Graph",
       "url": "/burn-temps/graph.html",
-      "description": "View temp graph"
+      "description": "View temp graph",
+      "icons": [
+        {
+          "src": "images/icons/graph-96x96.png",
+          "sizes": "96x96",
+          "type": "image/png"
+        }
+      ]
     }
   ],
   "categories": [
