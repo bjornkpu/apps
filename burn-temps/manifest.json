@@ -6,6 +6,22 @@
   "background_color": "#ffffff",
   "theme_color": "#000000",
   "description": "Track burn temps for the oven",
+  "id": "punsvik.apps.burn-temps",
+  "dir": "ltr",
+  "scope": "apps.punsvik.net/burn-temps",
+  "lang": "en",
+  "orientation": "portrait-primary",
+  "shortcuts": [
+    {
+      "name": "Graph",
+      "url": "https://apps.punsvik.net/burn-temps/graph.html",
+      "description": "View temp graph"
+    }
+  ],
+  "categories": [
+    "productivity",
+    "utilities"
+  ],
   "icons": [
     {
       "src": "flame-gradient-48x48.png",
