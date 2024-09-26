@@ -17,7 +17,6 @@
             const normalizedTs = new Date(timestamp - firstRecord)
             return normalizedTs.toISOString()
         });
-        console.table(timeAxis)
         
         traces.push(
             {
@@ -25,7 +24,7 @@
                 mode: 'lines+markers',
                 x: timeAxis,
                 y: records.map(r => r.Temp1),
-                name: `Burn ${burn} - Display`,
+                name: `${burn} - Display`,
                 line: {
                     dash: 'solid',
                     color: 'rgb(82, 64, 219)',
@@ -38,7 +37,7 @@
                 mode: 'lines+markers',
                 x: timeAxis,
                 y: records.map(r => r.Temp2),
-                name: `Burn ${burn} - Sidehull`,
+                name: `${burn} - Sidehull`,
                 line: {
                     dash: 'dot',
                     color: 'rgb(220, 60, 80)',
@@ -51,7 +50,7 @@
                 mode: 'lines+markers',
                 x: timeAxis,
                 y: records.map(r => r.Temp3),
-                name: `Burn ${burn} - Topphull`,
+                name: `${burn} - Topphull`,
                 line: {
                     dash: 'dot',
                     color: 'rgb(35,163,35)',
